@@ -28,9 +28,18 @@ In this challenge, you will create a Single Page Application complete with Clien
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain the differences between `client-side routing` and `server-side routing`.
+- [x] Explain the differences between `client-side routing` and `server-side routing`.
+  - Client-side routing occurs solely in the browser, which means it doesn't require a lot of network requests to update data. This makes the app faster as well, and makes it possible for the developer to control transitions more fulidly. Client-side routing is more difficult to initially set up than server-side routing and might affect SEO negatively.
+  
+  With server-side routing, any time data changes the entire page needs to refresh after a new network request. Search engines were built with this standard in mind, and so may benefit over pages built with client-side routing. Server-side routing is easier to initially set-up because the minimum to set up i two separate html files connected with anchor tags. 
+  
+  
 - [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+  - CRUD stands for Create, Read, Update and Delete. The HTTP methods map as POST, GET, PUT and DELETE, respectively. POST and PUT don't match up fully to Create and Update, though, because they can both be used to create a new item in a database. The difference is that PUT fully replaces an item at an address, while POST offers the item and the server then creates a new address for it.
+  
+  
 - [ ] Mention three tools we can use to make AJAX requests.
+  - JavaScript has a new built in method called fetch that we can use. Fetch basically extends XMLHttpRequest and adds Promises. We can also use the axios module, which adds additional features like cross-site forgery protection and automatic JSON transformations. So, the three tools we can use are fetch(), the XMLHttpRequest object or the axios library.
 
 
 ## Project Set Up
