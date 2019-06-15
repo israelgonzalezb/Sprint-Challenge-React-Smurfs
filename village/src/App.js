@@ -11,9 +11,10 @@ class App extends Component {
     this.state = {
       smurfs: []
     };
+    this.addSmurf = this.addSmurf.bind(this);
   }
-
-  componentDidMount() {
+  
+  getData(){
     axios
       .get("http://localhost:3333/smurfs")
       .then(res => {
@@ -23,13 +24,33 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  componentDidMount() {
+    this.getData();
+  }
+  
+  componentDidUpdate(prevState){
+    if (this.state !== prevState){
+      this.getData();
+    }
+  }
+  
+  addSmurf = (smurf, event) => {
+    event.preventDefault();
+    //debugger;
+    axios
+      .post("http://localhost:3333/smurfs", smurf)
+      .then(console.log("added new smurf"))
+      .catch(err => console.log(err));
+
+  };
+
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
   // Notice what your map function is looping over and returning inside of Smurfs.
   // You'll need to make sure you have the right properties on state and pass them down to props.
   render() {
     return (
       <div className="App">
-        <SmurfForm />
+        <SmurfForm addSmurf={this.addSmurf}/>
         <Smurfs smurfs={this.state.smurfs} />
       </div>
     );
